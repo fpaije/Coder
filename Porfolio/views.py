@@ -69,7 +69,8 @@ def agregar_certificacion(request):
 
             micertificacion = Certificacion_formulario(request.POST)  
 
-            if micertificacion.is_valid():   
+            if micertificacion.is_valid():  
+
                   informacion = micertificacion.cleaned_data
 
                   cert = Certificaciones(nombre=informacion['nombre'], tecnologia=informacion['tecnologia'], emisor=informacion['emisor'], fecha=informacion['fecha'])
@@ -111,6 +112,37 @@ def eliminar_cert(request, certificado_nombre):
 ########### METODO ELIMINAR CERTIFICACIONES -- END#####
 
 
+########### METODO EDITAR CERTIFICACIONES -- START#####
+def editar_cert(request, certificado_nombre):
+
+      certificaciones = Certificaciones.objects.get(nombre=certificado_nombre)
+
+      
+      if request.method == 'POST':
+
+            formulario = Certificacion_formulario(request.POST) 
+
+            if formulario.is_valid:   
+
+                  informacion = formulario.cleaned_data
+
+                  certificaciones.nombre = informacion['nombre']
+                  certificaciones.tecnologia = informacion['tecnologia']
+                  certificaciones.emisor = informacion['emisor']
+                  certificaciones.fecha = informacion['fecha']
+
+                  certificaciones.save()
+
+                  return render(request, 'porfolio/inicio.html') 
+      
+      else: 
+            
+            formulario= Certificacion_formulario (initial={'nombre': certificaciones.nombre, 'tecnologia':certificaciones.tecnologia , 
+            'emisor':certificaciones.emisor, 'fecha':certificaciones.fecha}) 
+
+      
+      return render(request, 'porfolio/editar_cert.html', {'formulario':formulario, 'certificado_nombre':certificado_nombre})
+########### METODO EDITAR CERTIFICACIONES -- END#####
 
 
 
