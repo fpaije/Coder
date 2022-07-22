@@ -1,46 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from Porfolio.forms import Certificacion_formulario, Contactos_formulario
-from Porfolio.models import Certificaciones, Contactos #respuesta Http
-# from .models import Post, Category #BLOG
-# from django.shortcuts import render, get_object_or_404#BLOG
+from Porfolio.models import Certificaciones, Contactos 
 
 
-def inicio(request): # http://127.0.0.1:8000/Porfolio/
 
-      return render(request, 'porfolio/inicio.html') #nombre de carpeta/nombreHTML
+def inicio(request): 
 
-# def cursos(request): #http://127.0.0.1:8000/Porfolio/cursos
+      return render(request, 'porfolio/inicio.html') 
 
-#       return render(request, "porfolio/cursos.html")
 
-def formacion_academica(request): # http://127.0.0.1:8000/Porfolio/
+def formacion_academica(request): 
 
       return render(request, 'porfolio/formacion_academica.html')
 
-def desarrollo_profesional(request): # http://127.0.0.1:8000/Porfolio/
+def desarrollo_profesional(request): 
 
       return render(request, 'porfolio/desarrollo_profesional.html')
 
-# Metodo Formulario
-
-# def agenda_formulario(request):
-
-#       if request.method == 'POST':
-#             agenda = Contactos(request.POST['nombre'], request.POST['apellido'], request.POST['email'], request.POST['profesion'])
-#             agenda.save()
-      
-#             return render(request, 'porfolio/inicio.html')
-#       return render(request, 'porfolio/agenda_formulario.html')
 
 #### METODO PARA AGREGAR CONTACTOS A LA DB -- START#####
 def agenda_formulario(request):
 
       if request.method == 'POST':
 
-            miagenda = Contactos_formulario(request.POST)  #aquí mellega toda la información del html
+            miagenda = Contactos_formulario(request.POST) 
 
-            if miagenda.is_valid():   #Si pasó la validación de Django
+            if miagenda.is_valid():   
 
                   informacion = miagenda.cleaned_data
 
@@ -81,10 +67,9 @@ def agregar_certificacion(request):
 
       if request.method == 'POST':
 
-            micertificacion = Certificacion_formulario(request.POST)  #aquí mellega toda la información del html
+            micertificacion = Certificacion_formulario(request.POST)  
 
-            if micertificacion.is_valid():   #Si pasó la validación de Django
-
+            if micertificacion.is_valid():   
                   informacion = micertificacion.cleaned_data
 
                   cert = Certificaciones(nombre=informacion['nombre'], tecnologia=informacion['tecnologia'], emisor=informacion['emisor'], fecha=informacion['fecha'])
@@ -103,7 +88,7 @@ def agregar_certificacion(request):
 ########### METODO VER CERTIFICACIONES -- START#####
 def ver_cert(request):
 
-      certificacion = Certificaciones.objects.all() #trae todos los profesores
+      certificacion = Certificaciones.objects.all() 
 
       contexto= {"certificacion":certificacion} 
 
@@ -117,8 +102,8 @@ def eliminar_cert(request, certificado_nombre):
       certificacion = Certificaciones.objects.get(nombre=certificado_nombre)
       certificacion.delete()
       
-      #vuelvo al menú
-      certs = Certificaciones.objects.all() #trae todos los profesores
+      
+      certs = Certificaciones.objects.all()
 
       contexto= {"certs":certs} 
 
@@ -127,15 +112,5 @@ def eliminar_cert(request, certificado_nombre):
 
 
 
-
-
-
-# def blog(request):
-#     posts = Post.objects.all()
-#     return render(request, 'porfolio/blog.html', {'posts':posts})
-
-# def category(request, category_id):
-#     category = get_object_or_404(Category, id=category_id)
-#     return render(request, 'porfolio/category.html', {'category':category})
 
 
