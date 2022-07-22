@@ -54,10 +54,10 @@ def agenda_formulario(request):
             miagenda = Contactos_formulario()
       
       return render(request, 'porfolio/agenda_formulario.html', {'miagenda':miagenda})
-####  END #####
+#### METODO PARA AGREGAR CONTACTOS A LA DB -- END#####
+
 
 #### METODO BUSCAR CONTACTOS A LA DB -- START#####
-
 def buscar(request):
 
       if request.GET["profesion"]:
@@ -73,6 +73,7 @@ def buscar(request):
 
       #No olvidar from django.http import HttpResponse
       return render(request, "porfolio/inicio.html", {"respuesta": respuesta})
+#### METODO BUSCAR CONTACTOS A LA DB -- END#####
 
 
 #### METODO PARA AGREGAR CERTIFICACIONES -- START#####
@@ -96,7 +97,8 @@ def agregar_certificacion(request):
             micertificacion = Certificacion_formulario()
       
       return render(request, 'porfolio/desarrollo_profesional.html', {'micertificacion':micertificacion})
-####  END #####
+#### METODO PARA AGREGAR CERTIFICACIONES -- END#####
+
 
 ########### METODO VER CERTIFICACIONES -- START#####
 def ver_cert(request):
@@ -106,9 +108,8 @@ def ver_cert(request):
       contexto= {"certificacion":certificacion} 
 
       return render(request, 'porfolio/ver_cert.html',contexto)
+########### METODO VER CERTIFICACIONES -- END#####
 
-########### METODO VER CERTIFICACIONES -- START#####
-####  END #####
 
 ########### METODO ELIMINAR CERTIFICACIONES -- START#####
 def eliminar_cert(request, certificado_nombre):
@@ -122,9 +123,9 @@ def eliminar_cert(request, certificado_nombre):
       contexto= {"certs":certs} 
 
       return render(request, "porfolio/desarrollo_profesional.html",contexto)
+########### METODO VER CERTIFICACIONES -- END#####
 
 
-########### METODO VER CERTIFICACIONES -- START#####
 
 
 
