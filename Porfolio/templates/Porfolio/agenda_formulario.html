@@ -1,0 +1,34 @@
+{% extends "Porfolio/principal.html" %}
+
+{% load static %}
+
+{% block content1 %}
+
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+<br>
+<h1>Agregar contactos</h1>
+
+    {% if miagenda.errors %}
+
+    <p style="color: red;"> Datos incorrectos</p>
+
+    {% endif %}
+    <form action="" method="POST">{% csrf_token %}
+
+                
+        <table>
+
+            {{ miagenda.as_table }}
+            
+        </table>
+        <br>
+        <input type="submit", value="Agregar">
+
+    </form>
+
+{% endblock %}
+
+
+
+
+

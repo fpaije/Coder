@@ -1,0 +1,28 @@
+{% extends "Porfolio/principal.html" %}
+
+{% load static %}
+
+{% block content1 %}
+
+
+    {% for c in certificacion %}
+    <br>
+    
+        <li>{{c}}</li>  
+
+        <button>
+            {% comment %} <a href="{% url 'eliminar_cert' c.nombre %}"> Eliminar</a> {% endcomment %}
+            {% comment %} <a href="{% url 'EditarCertificacion' p.nombre %}"> Editar</a> {% endcomment %}
+        </button>
+
+
+
+    {% endfor %}
+    <br>
+    <br>
+    <a href="desarrollo_profesional">Agregar otra Certificacion</a>
+        
+</body>
+</html>
+<br>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "Porfolio/principal.html" %}
+
+{% load static %}
+
+{% block content1 %}
+
+
+
+    <h3>Red de profesionales:</h3>
+
+    <form action="/Porfolio/buscar/" method="GET">
+
+        <input type="text" name="profesion" id="profesion">
+        <input type="submit" value="Buscar">
+
+    </form>
+
+
+
+    {% if contactoss %}
+
+</p>Busqueda por: {{profesion}}</p>
+
+    <ul>
+    {% for contacto in contactoss %}
+       <li> {{contacto.nombre}} </li>
+       <li> {{contacto.apellido}} </li>
+       <li> {{contacto.email}} </li>
+      
+    {% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+{% endblock %}
