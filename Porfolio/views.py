@@ -108,7 +108,7 @@ def eliminar_cert(request, certificado_nombre):
       contexto= {"certs":certs} 
 
       return render(request, "porfolio/desarrollo_profesional.html",contexto)
-########### METODO VER CERTIFICACIONES -- END#####
+########### METODO ELIMINAR CERTIFICACIONES -- END#####
 
 
 
