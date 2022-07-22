@@ -3,12 +3,19 @@ from django.http import HttpResponse
 from Porfolio.forms import Certificacion_formulario, Contactos_formulario
 from Porfolio.models import Certificaciones, Contactos 
 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 def inicio(request): 
 
       return render(request, 'porfolio/inicio.html') 
-
 
 def formacion_academica(request): 
 
@@ -145,4 +152,36 @@ def editar_cert(request, certificado_nombre):
 ########### METODO EDITAR CERTIFICACIONES -- END#####
 
 
+### Clases basadas en Vistas
 
+
+class Contactos_list(ListView):
+
+      model = Contactos 
+      template_name = "porfolio/contactos_list.html"
+
+
+class Contactos_detalle(DetailView):
+
+      model = Contactos
+      template_name = "porfolio/contactos_detalle.html"
+
+
+class Contactos_creacion(CreateView):
+
+      model = Contactos
+      success_url = "/Porfolio/contactos/list"
+      fields = ['nombre', 'apellido','email', 'profesion']
+
+
+class Contactos_update(UpdateView):
+
+      model = Contactos
+      success_url = "/Porfolio/contactos/list"
+      fields  = ['nombre', 'apellido','email', 'profesion']
+
+
+class Contactos_delete(DeleteView):
+
+      model = Contactos
+      success_url = "/Porfolio/contactos/list"
