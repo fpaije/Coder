@@ -122,7 +122,7 @@ def editar_cert(request, certificado_nombre):
 
             formulario = Certificacion_formulario(request.POST) 
 
-            if formulario.is_valid:   
+            if formulario.is_valid():   
 
                   informacion = formulario.cleaned_data
 

@@ -17,11 +17,5 @@ El tema es que si ahora quiero seguir con eliminar y demas, voy a tener el mismo
 Intente seguir el modelo de las clases, pero no se que esta pasando. 
 
 
-####
-Tampoco estoy pudiendo encontrar el problema con el metodo de edicion, logre configurar todo, pero cuando haces una edicion y le das a enviar se rompe con este error
-
-"AttributeError: 'Certificacion_formulario' object has no attribute 'cleaned_data'"
-
-HELP :)
 
 
