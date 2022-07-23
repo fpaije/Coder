@@ -89,7 +89,7 @@ def agregar_certificacion(request):
 
             micertificacion = Certificacion_formulario()
       
-      return render(request, 'porfolio/desarrollo_profesional.html', {'micertificacion':micertificacion})
+      return render(request, 'porfolio/agregar_certificacion.html', {'micertificacion':micertificacion}) #cambié render... 
 #### METODO PARA AGREGAR CERTIFICACIONES -- END#####
 
 

@@ -1,0 +1,26 @@
+{% extends "Porfolio/principal.html" %}
+
+{% load static %}
+
+{% block content1 %}
+
+<br>
+    
+<h1>Agregar Certificaciones</h1>
+
+    {% if micertificacion.errors %}
+
+    <p style="color: red;"> Datos incorrectos</p>
+
+    {% endif %}
+
+    <form action="{% url 'Agregar_Certificacion' %}" method="POST" >{% csrf_token %}
+        <table>
+            {{ micertificacion.as_table }}
+        </table>
+      
+        <input type="submit" value="Enviar" />
+    </form>
+
+
+{% endblock %}
